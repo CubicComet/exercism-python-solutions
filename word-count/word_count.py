@@ -1,5 +1,5 @@
 def word_count(s):
-    words = strip_punc(s.lower()).split()
+    words = strip_punc(s).lower().split()
     return {word: words.count(word) for word in set(words)}
 
 
