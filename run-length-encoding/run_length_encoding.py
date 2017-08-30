@@ -2,7 +2,7 @@ import re
 
 
 def decode(s):
-    parts = re.findall(r'[0-9]*?[a-zA-Z ]', s)
+    parts = re.findall(r'[0-9]*?[^0-9]', s)
     out_string = ""
     for part in parts:
         try:
