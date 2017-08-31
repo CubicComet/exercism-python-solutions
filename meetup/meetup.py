@@ -14,8 +14,8 @@ ORDINAL = {"1st": 0, "2nd": 7, "3rd": 14, "4th": 21, "5th": 28}
 
 
 def meetup_day(y, m, dow, dom):
-    start = date(y, m, 1)
-    first_dow = (WEEKDAYS[dow] - start.weekday()) % 7 + 1
+    start_dow = date(y, m, 1).weekday()
+    first_dow = (WEEKDAYS[dow] - start_dow) % 7 + 1
     
     if dom == "teenth":
         d = date(y, m, TEENTH[first_dow])
