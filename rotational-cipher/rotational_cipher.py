@@ -7,8 +7,7 @@ LOWER = string.ascii_lowercase
 
 def rotate(s, n):
     rules = shift_rules(n)
-    return "".join(map(lambda k: rules.get(k, k), s))
-
+    return "".join(rules.get(ch, ch) for ch in s)
 
 def shift_rules(n):
     shifted = UPPER[n:] + UPPER[:n] + LOWER[n:] + LOWER[:n]
