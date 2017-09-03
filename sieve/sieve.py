@@ -10,4 +10,4 @@ def primes(n):
     for i in range(3, n+1, 2):
         if i not in not_prime:
             yield i
-        not_prime.update(range(i, n, i))
+        not_prime.update(range(i*i, n, i))
