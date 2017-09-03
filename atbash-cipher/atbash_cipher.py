@@ -1,3 +1,4 @@
+import re
 from string import ascii_lowercase, digits
 
 
@@ -6,7 +7,7 @@ ATBASH = {k: v for k, v in zip(ascii_lowercase + digits,
 
 
 def encode(s):
-    encoded = atbash(s)
+    return " ".join(re.findall(r'.{1,5}', atbash(s)))
 
 
 def decode(s):
