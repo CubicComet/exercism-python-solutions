@@ -1,6 +1,17 @@
-def encode(string):
-    pass
+from string import ascii_lowercase, digits
 
 
-def decode(string):
-    pass
+ATBASH = {k: v for k, v in zip(ascii_lowercase + digits,
+                               ascii_lowercase[::-1] + digits)}
+
+
+def encode(s):
+    encoded = atbash(s)
+
+
+def decode(s):
+    return atbash(s)
+
+
+def atbash(s):
+    return "".join(ATBASH.get(ch, "") for ch in s.lower())
