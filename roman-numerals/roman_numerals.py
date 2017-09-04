@@ -1,15 +1,8 @@
-def numeral(arabic):
-    m, rem = divmod(arabic, 1000)
-    d, rem = divmod(rem, 500)
-    c, rem = divmod(rem, 100)
-    l, rem = divmod(rem, 50)
-    x, rem = divmod(rem, 10)
-    v, i = divmod(rem, 5)
-
-    numerals = m * "M"
-    numerals += _numeral((c, d), ("C", "D", "M"))
-    numerals += _numeral((x, l), ("X", "L", "C"))
-    numerals += _numeral((i, v), ("I", "V", "X"))
+def numeral(n):
+    numerals = (n//1000) * "M"
+    numerals += _numeral(((n%500)//100, (n%1000)//500), ("C", "D", "M"))
+    numerals += _numeral(((n%50)//10, (n%100)//50), ("X", "L", "C"))
+    numerals += _numeral(((n%5), (n%10)//5), ("I", "V", "X"))
     return numerals
 
 
