@@ -5,11 +5,8 @@ def flatten(lst):
 
 def _flatten(lst):
     """Generator for flattening arbitrarily-deep lists"""
-    if isinstance(lst, (list, tuple)):
-        for item in lst:
-            if item is None:
-                continue
-            else:
-                yield from _flatten(item)
-    else:
-        yield lst
+    for item in lst:
+        if isinstance(item, (list, tuple)):
+            yield from _flatten(item)
+        elif item is not None:
+            yield item
