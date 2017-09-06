@@ -1,11 +1,9 @@
-import sieve
-
-
 def prime_factors(n):
-    primes = sieve.sieve(n)
     factors = []
-    for p in primes:
-        while n % p == 0:
-            factors += [p]
-            n //= p
+    factor = 2
+    while n != 1:
+        while n % factor == 0:
+            factors += [factor]
+            n //= factor
+        factor += 1
     return factors
