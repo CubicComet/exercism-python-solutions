@@ -12,9 +12,6 @@ class Luhn(object):
     def _double(i_n):
         i, n = i_n
         if i % 2 == 0:
-            x = n
+            return n
         else:
-            x = 2 * n
-            if x > 9:
-                x -= 9
-        return x
+            return 2*n if n == n % 5 else 2*n - 9
