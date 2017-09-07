@@ -3,17 +3,17 @@ SUBLIST = "sublist"
 EQUAL = "equal"
 UNEQUAL = "unequal"
 
+VERY_UNLIKELY_STRING = "ꗲꅯḪꍙ"
+
 
 def check_lists(a, b):
     if a == b:
         return EQUAL
-    elif is_sublist(a, b):
+    _a = VERY_UNLIKELY_STRING.join(map(str, a))
+    _b = VERY_UNLIKELY_STRING.join(map(str, b))
+    if _a in _b:
         return SUBLIST
-    elif is_sublist(b, a):
+    elif _b in _a:
         return SUPERLIST
     else:
         return UNEQUAL
-
-
-def is_sublist(a, b):
-    return a in [b[i:i + len(a)] for i in range(len(b) - len(a) + 1)]
