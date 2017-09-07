@@ -6,7 +6,7 @@ from string import ascii_lowercase
 class Cipher(object):
     def __init__(self, key=None):
         if not key:
-            key = Cipher._random_key()
+            key = self._random_key()
         if not key.isalpha() or not key.islower():
             raise ValueError("Key must consist only of lowercase letters")
         self.key = key
@@ -15,12 +15,12 @@ class Cipher(object):
     def encode(self, s):
         key = self._key * math.ceil(len(s)/len(self._key))
         chars = [c for c in s.lower() if c in ascii_lowercase]
-        return "".join(Cipher._shift(c, k) for c, k in zip(chars, key))
+        return "".join(self._shift(c, k) for c, k in zip(chars, key))
 
     def decode(self, s):
         key = self._key * math.ceil(len(s)/len(self._key))
         chars = [c for c in s.lower() if c in ascii_lowercase]
-        return "".join(Cipher._shift(c, -k) for c, k in zip(chars, key))
+        return "".join(self._shift(c, -k) for c, k in zip(chars, key))
 
     @staticmethod
     def _shift(char, key):
@@ -33,4 +33,4 @@ class Cipher(object):
 
 class Caesar(Cipher):
     def __init__(self):
-        Cipher.__init__(self, "d")
+        super().__init__("d")
