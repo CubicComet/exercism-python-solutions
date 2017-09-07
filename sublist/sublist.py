@@ -7,11 +7,13 @@ UNEQUAL = "unequal"
 def check_lists(a, b):
     if a == b:
         return EQUAL
-    _a = ";;".join(map(str, a))
-    _b = ";;".join(map(str, b))
-    if _a in _b:
+    elif is_sublist(a, b):
         return SUBLIST
-    elif _b in _a:
+    elif is_sublist(b, a):
         return SUPERLIST
     else:
         return UNEQUAL
+
+
+def is_sublist(a, b):
+    return a in [b[i:i + len(a)] for i in range(len(b) - len(a) + 1)]
