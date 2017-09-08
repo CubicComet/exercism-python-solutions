@@ -12,15 +12,13 @@ class Cipher(object):
         self.key = key
         self._key = [ord(k)-97 for k in key]
 
-    def encode(self, s):
+    def encode(self, s, dirn=1):
         key = self._key * math.ceil(len(s)/len(self._key))
         chars = [c for c in s.lower() if c in ascii_lowercase]
-        return "".join(self._shift(c, k) for c, k in zip(chars, key))
+        return "".join(self._shift(c, dirn*k) for c, k in zip(chars, key))
 
     def decode(self, s):
-        key = self._key * math.ceil(len(s)/len(self._key))
-        chars = [c for c in s.lower() if c in ascii_lowercase]
-        return "".join(self._shift(c, -k) for c, k in zip(chars, key))
+        return self.encode(s, dirn=-1)
 
     @staticmethod
     def _shift(char, key):
