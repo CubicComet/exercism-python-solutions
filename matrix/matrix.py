@@ -5,5 +5,4 @@ class Matrix(object):
 
     @property
     def columns(self):
-        return [[row[i] for row in self.rows]
-                for i in range(len(self.rows[0]))]
+        return [list(col) for col in zip(*self.rows)]
