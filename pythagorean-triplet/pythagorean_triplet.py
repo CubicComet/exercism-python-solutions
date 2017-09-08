@@ -13,7 +13,7 @@ def triplets_in_range(lower, upper):
     for i in range(4, upper, 4):
         base_triplets += _triplets(i)
     triplets = base_triplets.copy()
-    for i in range(1, upper//5+1):
+    for i in range(2, upper//5+1):
         multiply = lambda y: y*i
         trip_multiply = lambda x: tuple(map(multiply, x))
         triplets += map(trip_multiply, base_triplets)
