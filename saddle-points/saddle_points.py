@@ -3,8 +3,7 @@ def saddle_points(m):
     if not m == transpose(mt):
         raise ValueError
     return set((i, j) for i, row in enumerate(m) for j, col in enumerate(mt)
-                if (row[j] == min(row) and col[i] == max(col))
-                or (row[j] == max(row) and col[i] == min(col)))
+                if (row[j] == max(row) and col[i] == min(col)))
 
 
 def transpose(m):
