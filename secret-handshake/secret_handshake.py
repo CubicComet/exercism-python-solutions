@@ -8,10 +8,7 @@ def handshake(n):
         n = int(n)
     if not 0 < n < 32:
         return []
-    lst = []
-    for action, val in CODE.items():
-        if n & val:
-            lst.append(action)
+    lst = [action for action, val in CODE.items() if n & val]
     return lst if not n & 16 else list(reversed(lst))
 
 
