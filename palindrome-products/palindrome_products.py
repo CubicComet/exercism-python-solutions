@@ -1,3 +1,4 @@
+import random
 from collections import defaultdict
 
 
@@ -19,7 +20,7 @@ def _palindromes(max_factor, min_factor, minmax):
                 pals[p].add(tuple(sorted([i,j])))
 
     value = minmax(pals)
-    factors = pals[value]
+    factors = random.choice(list(pals[value]))
     return (value, factors)
 
 
