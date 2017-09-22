@@ -24,4 +24,6 @@ def is_valid_board(b):
     height = "{" + str(len(b) - 2) + "}"
     r = re.compile("^(\+-{w}\+)(\|[ *]{w}\|){h}(\+-{w}\+)$".format(w=width,
                                                                    h=height))
+    # bool is technically redundant here, but I'd rather that this function
+    # return an explicit True/False
     return bool(r.match("".join(b)))
