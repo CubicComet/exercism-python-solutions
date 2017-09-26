@@ -6,13 +6,13 @@ class Triangle(object):
     def __init__(self, *dims):
         if not self.is_valid(dims):
             raise TriangleError("Invalid dimensions: {}".format(dims))
-        self.dims = dims
+        self.dims = sorted(dims)
 
     def kind(self):
         a, b, c = self.dims
-        if a == b and b == c:
+        if a == b and b == c: # implies a == c
             return "equilateral"
-        elif a == b or b == c or a == c:
+        elif a == b or b == c: # sorted, so a < c here unless a == c above
             return "isosceles"
         else:
             return "scalene"
@@ -20,7 +20,6 @@ class Triangle(object):
     @staticmethod
     def is_valid(dims):
         if len(dims) != 3:
-            return False
-        a, b, c = dims
-        return (a > 0 and b > 0 and c > 0) \
-                and (a + b > c and a + c > b and b + c > a)
+            raise ValueError("Triangles have 3 sides")
+        a, b, c = sorted(dims)
+        return a > 0 and a + b > c
