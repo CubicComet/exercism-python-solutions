@@ -6,6 +6,7 @@ from house import rhyme, verse
 
 
 class VerseTest(unittest.TestCase):
+
     def test_verse_0(self):
         expected = 'This is the house that Jack built.'
         self.assertEqual(verse(0), expected)
@@ -44,6 +45,7 @@ class VerseTest(unittest.TestCase):
         self.assertEqual(verse(11), expected)
 
     def test_rhyme(self):
+        self.maxDiff = None
         expected = 'This is the house that Jack built.\n\n'\
                    'This is the malt\n'\
                    'that lay in the house that Jack built.\n\n'\
