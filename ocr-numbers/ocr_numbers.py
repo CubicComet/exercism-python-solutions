@@ -14,10 +14,7 @@ OCR = {v: k for k, v in SEG.items()}
 
 def number(seg):
     rows = [[row[i:i+3] for i in range(0, len(row), 3)] for row in seg]
-    try:
-        return "".join(digit(d) for d in zip(*rows))
-    except TypeError:
-        print(rows)
+    return "".join(digit(d) for d in zip(*rows))
 
 
 def digit(d):
