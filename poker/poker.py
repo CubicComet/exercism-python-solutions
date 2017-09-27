@@ -33,8 +33,6 @@ def hand_value(hand):
     else:
         type_score = 0
 
-    print((hand, type_score, poker_sort(values)))
-
     return (13**5 * type_score
             + sum(13**i * val for i, val in enumerate(poker_sort(values))))
 
