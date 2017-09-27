@@ -36,7 +36,7 @@ def hand_value(hand):
     print((hand, type_score, poker_sort(values)))
 
     return (13**5 * type_score
-            + sum(13**(4-i) * val for i, val in enumerate(poker_sort(values))))
+            + sum(13**i * val for i, val in enumerate(poker_sort(values))))
 
 
 def is_flush(suits):
@@ -80,4 +80,4 @@ def is_onepair(values):
 
 
 def poker_sort(values):
-    return sorted(values, key=lambda x: 13*values.count(x)+x, reverse=True)
+    return sorted(values, key=lambda x: 13*values.count(x)+x)
